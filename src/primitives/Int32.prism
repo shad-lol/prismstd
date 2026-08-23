@@ -1,0 +1,39 @@
+public func add(_ other: Int32, to: Int32) { to = to + other }
+
+public func subtract(_ other: Int32, from: Int32) { from = from - other }
+
+public func multiply(_ float: Int32, by: Int32) { float = float * by }
+
+public func divide(_ float: Int32, by: Int32) { float = float / by }
+
+
+
+module Int32 {
+
+	0: data: @i32
+
+
+
+	public func plus(_ other: Int32) -> Int32 { return @i32_plus(data, other.data) }
+
+	public func minus(_ other: Int32) -> Int32 { return @i32_minus(data, other.data) }
+
+	public func times(_ other: Int32) -> Int32 { return @i32_times(data, other.data) }
+
+	public func divided(by: Int32) -> Int32 { return @i32_divided_by(data, other.data) }
+
+
+
+	operator +  (_ other: Int32) -> Int32 { return self.plus(other) }
+	operator += (_ other: Int32) { add(other, to: self) }
+
+	operator -  (_ other: Int32) -> Int32 { return self.minus(other) }
+	operator -= (_ other: Int32) { subtract(other, from: self) }
+
+	operator *  (_ other: Int32) -> Int32 { return self.times(other) }
+	operator *= (_ other: Int32) { multiply(self, by: other) }
+
+	operator /  (_ other: Int32) -> Int32 { return self.divided(by: other) }
+	operator /= (_ other: Int32) { divide(self, by: other) }
+
+}

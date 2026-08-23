@@ -1,0 +1,39 @@
+public func add(_ other: UInt64, to: UInt64) { to = to + other }
+
+public func subtract(_ other: UInt64, from: UInt64) { from = from - other }
+
+public func multiply(_ float: UInt64, by: UInt64) { float = float * by }
+
+public func divide(_ float: UInt64, by: UInt64) { float = float / by }
+
+
+
+module UInt64 {
+
+	0: data: @u64
+
+
+
+	public func plus(_ other: UInt64) -> UInt64 { return @u64_plus(data, other.data) }
+
+	public func minus(_ other: UInt64) -> UInt64 { return @u64_minus(data, other.data) }
+
+	public func times(_ other: UInt64) -> UInt64 { return @u64_times(data, other.data) }
+
+	public func divided(by: UInt64) -> UInt64 { return @u64_divided_by(data, other.data) }
+
+
+
+	operator +  (_ other: UInt64) -> UInt64 { return self.plus(other) }
+	operator += (_ other: UInt64) { add(other, to: self) }
+
+	operator -  (_ other: UInt64) -> UInt64 { return self.minus(other) }
+	operator -= (_ other: UInt64) { subtract(other, from: self) }
+
+	operator *  (_ other: UInt64) -> UInt64 { return self.times(other) }
+	operator *= (_ other: UInt64) { multiply(self, by: other) }
+
+	operator /  (_ other: UInt64) -> UInt64 { return self.divided(by: other) }
+	operator /= (_ other: UInt64) { divide(self, by: other) }
+
+}

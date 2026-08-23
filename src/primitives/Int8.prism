@@ -1,0 +1,39 @@
+public func add(_ other: Int8, to: Int8) { to = to + other }
+
+public func subtract(_ other: Int8, from: Int8) { from = from - other }
+
+public func multiply(_ float: Int8, by: Int8) { float = float * by }
+
+public func divide(_ float: Int8, by: Int8) { float = float / by }
+
+
+
+module Int8 {
+
+	0: data: @i8
+
+
+
+	public func plus(_ other: Int8) -> Int8 { return @i8_plus(data, other.data) }
+
+	public func minus(_ other: Int8) -> Int8 { return @i8_minus(data, other.data) }
+
+	public func times(_ other: Int8) -> Int8 { return @i8_times(data, other.data) }
+
+	public func divided(by: Int8) -> Int8 { return @i8_divided_by(data, other.data) }
+
+
+
+	operator +  (_ other: Int8) -> Int8 { return self.plus(other) }
+	operator += (_ other: Int8) { add(other, to: self) }
+
+	operator -  (_ other: Int8) -> Int8 { return self.minus(other) }
+	operator -= (_ other: Int8) { subtract(other, from: self) }
+
+	operator *  (_ other: Int8) -> Int8 { return self.times(other) }
+	operator *= (_ other: Int8) { multiply(self, by: other) }
+
+	operator /  (_ other: Int8) -> Int8 { return self.divided(by: other) }
+	operator /= (_ other: Int8) { divide(self, by: other) }
+
+}

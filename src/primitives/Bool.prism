@@ -1,0 +1,51 @@
+public func bitwise_and(_ other: Bool, with: Bool) { with = with & other }
+
+public func bitwise_or(_ other: Bool, with: Bool) { with = with | other }
+
+
+
+public func not(_ bool: Bool) -> Bool { return @u32_not(bool.data) }
+
+
+prefix operator ! (bool: Bool) -> Bool { return not(bool) }
+
+module Bool {
+	
+	0: data: @u32
+
+
+
+	public func and(_ other: Bool) -> Bool {
+		if (self) return other
+		else return false;
+	}
+
+	public func bitwise_and(_ other: Bool) -> Bool { return @u32_and(data, other.data) }
+
+
+	public func or(_ other: Bool) -> Bool {
+		if (self) return true
+		else return other
+	}
+	
+	public func bitwise_or(_ other: Bool) -> Bool { return @u32_or(data, other.data) }
+
+
+
+	public func equals(_ other: Bool) -> Bool 	  { return @u32_equals(data, other.data) }
+	public func not_equals(_ other: Bool) -> Bool { return @u32_not_equals(data, other.data) }
+
+
+
+	operator &  (other: Bool) -> Bool { return self.bitwise_and(other) }
+	operator && (other: Bool) -> Bool { return self.and(other) }
+	operator &= (other: Bool) { bitwise_and(other, with: self) }
+
+	operator |  (other: Bool) -> Bool { return self.bitwise_or(other) }
+	operator || (other: Bool) -> Bool { return self.or(other) }
+	operator |= (other: Bool) { bitwise_or(other, with: self) }
+
+	operator == (other: Bool) -> Bool { return self.equals(other) }
+	operator != (other: Bool) -> Bool { return self.not_equals(other) }
+
+}
