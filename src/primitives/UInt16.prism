@@ -1,39 +1,75 @@
-public func add(_ other: UInt16, to: UInt16) { to = to + other }
 
-public func subtract(_ other: UInt16, from: UInt16) { from = from - other }
+/*   Copyright 2026 Prism Standard Library Authors
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
 
-public func multiply(_ float: UInt16, by: UInt16) { float = float * by }
+public func add(_ other: Uint16, to: Uint16) { to = to + other }
 
-public func divide(_ float: UInt16, by: UInt16) { float = float / by }
+public func subtract(_ other: Uint16, from: Uint16) { from = from - other }
+
+public func multiply(_ float: Uint16, by: Uint16) { float = float * by }
+
+public func divide(_ float: Uint16, by: Uint16) { float = float / by }
 
 
 
-module UInt16 {
+module Uint16 {
 
 	0: data: @u16
 
 
 
-	public func plus(_ other: UInt16) -> UInt16 { return @u16_plus(data, other.data) }
+	public func plus(_ other: Uint16) -> Uint16 { return @u16_plus(data, other.data) }
 
-	public func minus(_ other: UInt16) -> UInt16 { return @u16_minus(data, other.data) }
+	public func minus(_ other: Uint16) -> Uint16 { return @u16_minus(data, other.data) }
 
-	public func times(_ other: UInt16) -> UInt16 { return @u16_times(data, other.data) }
+	public func times(_ other: Uint16) -> Uint16 { return @u16_times(data, other.data) }
 
-	public func divided(by: UInt16) -> UInt16 { return @u16_divided_by(data, other.data) }
+	public func divided(by: Uint16) -> Uint16 { return @u16_divided_by(data, other.data) }
+
+
+	public func equals(_ other: Uint16) -> Bool { return @u16_equals(data, other.data) }
+	public func is_not(_ other: Uint16) -> Bool { return @u16_is_not(data, other.data) }
+
+	public func is_less_than(_ other: Uint16) -> Bool { return @u16_is_less_than(data, other.data) }
+	public func is_less_than_or_equal(_ other: Uint16) -> Bool { return @u16_is_less_than_or_equal(data, other.data) }
+
+	public func is_greater_than(_ other: Uint16) -> Bool { return @u16_is_greater_than(data, other.data) }
+	public func is_greater_than_or_equal(_ other: Uint16) -> Bool { return @u16_is_greater_than_or_equal(data, other.data) }
 
 
 
-	operator +  (_ other: UInt16) -> UInt16 { return self.plus(other) }
-	operator += (_ other: UInt16) { add(other, to: self) }
+	operator +  (other: Uint16) -> Uint16 { return self.plus(other) }
+	operator += (other: Uint16) { add(other, to: self) }
 
-	operator -  (_ other: UInt16) -> UInt16 { return self.minus(other) }
-	operator -= (_ other: UInt16) { subtract(other, from: self) }
+	operator -  (other: Uint16) -> Uint16 { return self.minus(other) }
+	operator -= (other: Uint16) { subtract(other, from: self) }
 
-	operator *  (_ other: UInt16) -> UInt16 { return self.times(other) }
-	operator *= (_ other: UInt16) { multiply(self, by: other) }
+	operator *  (other: Uint16) -> Uint16 { return self.times(other) }
+	operator *= (other: Uint16) { multiply(self, by: other) }
 
-	operator /  (_ other: UInt16) -> UInt16 { return self.divided(by: other) }
-	operator /= (_ other: UInt16) { divide(self, by: other) }
+	operator /  (other: Uint16) -> Uint16 { return self.divided(by: other) }
+	operator /= (other: Uint16) { divide(self, by: other) }
+
+
+	operator == (other: Uint16) -> Bool { return self.equals(other) }
+	operator != (other: Uint16) -> Bool { return self.is_not(other) }
+
+	operator <  (other: Uint16) -> Bool { return self.is_less_than(other) }
+	operator <= (other: Uint16) -> Bool { return self.is_less_than_or_equal(to: other) }
+
+	operator <  (other: Uint16) -> Bool { return self.is_greater_than(other) }
+	operator <= (other: Uint16) -> Bool { return self.is_greater_than_or_equal(to: other) }
 
 }

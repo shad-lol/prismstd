@@ -1,3 +1,19 @@
+
+/*   Copyright 2026 Prism Standard Library Authors
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
+
 public func add(_ other: UInt64, to: UInt64) { to = to + other }
 
 public func subtract(_ other: UInt64, from: UInt64) { from = from - other }
@@ -23,17 +39,37 @@ module UInt64 {
 	public func divided(by: UInt64) -> UInt64 { return @u64_divided_by(data, other.data) }
 
 
+	public func equals(_ other: UInt64) -> Bool { return @u64_equals(data, other.data) }
+	public func is_not(_ other: UInt64) -> Bool { return @u64_is_not(data, other.data) }
 
-	operator +  (_ other: UInt64) -> UInt64 { return self.plus(other) }
-	operator += (_ other: UInt64) { add(other, to: self) }
+	public func is_less_than(_ other: UInt64) -> Bool { return @u64_is_less_than(data, other.data) }
+	public func is_less_than_or_equal(_ other: UInt64) -> Bool { return @u64_is_less_than_or_equal(data, other.data) }
 
-	operator -  (_ other: UInt64) -> UInt64 { return self.minus(other) }
-	operator -= (_ other: UInt64) { subtract(other, from: self) }
+	public func is_greater_than(_ other: UInt64) -> Bool { return @u64_is_greater_than(data, other.data) }
+	public func is_greater_than_or_equal(_ other: UInt64) -> Bool { return @u64_is_greater_than_or_equal(data, other.data) }
 
-	operator *  (_ other: UInt64) -> UInt64 { return self.times(other) }
-	operator *= (_ other: UInt64) { multiply(self, by: other) }
 
-	operator /  (_ other: UInt64) -> UInt64 { return self.divided(by: other) }
-	operator /= (_ other: UInt64) { divide(self, by: other) }
+
+	operator +  (other: UInt64) -> UInt64 { return self.plus(other) }
+	operator += (other: UInt64) { add(other, to: self) }
+
+	operator -  (other: UInt64) -> UInt64 { return self.minus(other) }
+	operator -= (other: UInt64) { subtract(other, from: self) }
+
+	operator *  (other: UInt64) -> UInt64 { return self.times(other) }
+	operator *= (other: UInt64) { multiply(self, by: other) }
+
+	operator /  (other: UInt64) -> UInt64 { return self.divided(by: other) }
+	operator /= (other: UInt64) { divide(self, by: other) }
+
+
+	operator == (other: UInt64) -> Bool { return self.equals(other) }
+	operator != (other: UInt64) -> Bool { return self.is_not(other) }
+
+	operator <  (other: UInt64) -> Bool { return self.is_less_than(other) }
+	operator <= (other: UInt64) -> Bool { return self.is_less_than_or_equal(to: other) }
+
+	operator <  (other: UInt64) -> Bool { return self.is_greater_than(other) }
+	operator <= (other: UInt64) -> Bool { return self.is_greater_than_or_equal(to: other) }
 
 }

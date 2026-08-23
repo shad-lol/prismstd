@@ -1,0 +1,75 @@
+
+/*   Copyright 2026 Prism Standard Library Authors
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
+
+public func add(_ other: USize, to: USize) { to = to + other }
+
+public func subtract(_ other: USize, from: USize) { from = from - other }
+
+public func multiply(_ float: USize, by: USize) { float = float * by }
+
+public func divide(_ float: USize, by: USize) { float = float / by }
+
+
+
+module USize {
+
+	0: data: @u64
+
+
+
+	public func plus(_ other: USize) -> USize { return @u64_plus(data, other.data) }
+
+	public func minus(_ other: USize) -> USize { return @u64_minus(data, other.data) }
+
+	public func times(_ other: USize) -> USize { return @u64_times(data, other.data) }
+
+	public func divided(by: USize) -> USize { return @u64_divided_by(data, other.data) }
+
+
+	public func equals(_ other: USize) -> Bool { return @u64_equals(data, other.data) }
+	public func is_not(_ other: USize) -> Bool { return @u64_is_not(data, other.data) }
+
+	public func is_less_than(_ other: USize) -> Bool { return @u64_is_less_than(data, other.data) }
+	public func is_less_than_or_equal(_ other: USize) -> Bool { return @u64_is_less_than_or_equal(data, other.data) }
+
+	public func is_greater_than(_ other: USize) -> Bool { return @u64_is_greater_than(data, other.data) }
+	public func is_greater_than_or_equal(_ other: USize) -> Bool { return @u64_is_greater_than_or_equal(data, other.data) }
+
+
+
+	operator +  (other: USize) -> USize { return self.plus(other) }
+	operator += (other: USize) { add(other, to: self) }
+
+	operator -  (other: USize) -> USize { return self.minus(other) }
+	operator -= (other: USize) { subtract(other, from: self) }
+
+	operator *  (other: USize) -> USize { return self.times(other) }
+	operator *= (other: USize) { multiply(self, by: other) }
+
+	operator /  (other: USize) -> USize { return self.divided(by: other) }
+	operator /= (other: USize) { divide(self, by: other) }
+
+
+	operator == (other: USize) -> Bool { return self.equals(other) }
+	operator != (other: USize) -> Bool { return self.is_not(other) }
+
+	operator <  (other: USize) -> Bool { return self.is_less_than(other) }
+	operator <= (other: USize) -> Bool { return self.is_less_than_or_equal(to: other) }
+
+	operator <  (other: USize) -> Bool { return self.is_greater_than(other) }
+	operator <= (other: USize) -> Bool { return self.is_greater_than_or_equal(to: other) }
+
+}
